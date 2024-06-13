@@ -18,4 +18,4 @@ Route::get('/register', function () {
 
 Route::post('/register', [UserController::class, 'register']);
 
-//Route::get('/', [CategoryController::class, 'index']);
+Route::get('/', [CategoryController::class, 'index']);

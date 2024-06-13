@@ -15,9 +15,9 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#!">All Products</a></li>
                             <li><hr class="dropdown-divider" /></li>
-                            {{-- @foreach ($categories as $category)
+                            @foreach ($categories as $category)
                                 <li><a class="dropdown-item" action="{{ url('/{category->name}') }}">{{ $category->name }}</a></li>
-                            @endforeach --}}
+                            @endforeach
                         </ul>
                     </li>
                 </ul>
