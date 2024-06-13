@@ -62,7 +62,7 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <!-- Bootstrap core JS and dependencies-->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBogGzJp5tGpJQ4lKzJL6F2NO4E7P2Q5/Pp0h6XIHlEHiBI6" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuVhLL5koVST6yU9/UD1ibm2qGjpYRTCR+yM5DyHQQ1bw1KPMphvq7HghfDywdf+M" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
 </body>
 </html>
