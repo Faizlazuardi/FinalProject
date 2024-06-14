@@ -22,42 +22,49 @@
             <!--Right nav -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="ms-auto d-flex align-items-center">
-                    <!-- Sign In Button -->
-                    <form class="d-flex me-2" action="{{ url('/login') }}" method="get">
-                        <button class="btn btn-outline-dark" type="submit">
-                            Sign In
-                        </button>
-                    </form>
-
-                    <!-- Sign Up Button -->
-                    <form class="d-flex me-2" action="{{ url('/register') }}" method="get">
-                        <button class="btn btn-outline-dark" type="submit">
-                            Sign Up
-                        </button>
-                    </form>
-
-                    <!-- Cart Button -->
-                    <form class="d-flex">
-                        <button class="btn btn-outline-dark me-3" type="submit">
-                            <i class="bi bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
-
-                    <!-- User Icon -->
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-person-circle" style="font-size: 1.6rem;"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownUser">
-                                <li><a class="dropdown-item" href="#!"><i class="bi bi-sliders2 me-2"></i>Account</a></li>
-                                <li><a class="dropdown-item" href="#!"><i class="bi bi-gear me-2"></i>Settings</a></li>
-                                <li><a class="dropdown-item" href="#!"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    @guest
+                        <!-- Sign In Button -->
+                        <form class="d-flex me-2" action="{{ url('/login') }}" method="get">
+                            <button class="btn btn-outline-dark" type="submit">
+                                Sign In
+                            </button>
+                        </form>
+                        <!-- Sign Up Button -->
+                        <form class="d-flex me-2" action="{{ url('/register') }}" method="get">
+                            <button class="btn btn-outline-dark" type="submit">
+                                Sign Up
+                            </button>
+                        </form>
+                    @endguest
+                    @auth
+                        <!-- Cart Button -->
+                        <form class="d-flex">
+                            <button class="btn btn-outline-dark me-3" type="submit">
+                                <i class="bi bi-cart-fill me-1"></i>
+                                Cart
+                                <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                            </button>
+                        </form>
+                        <!-- User Icon -->
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-person-circle" style="font-size: 1.6rem;"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownUser">
+                                    <li><a class="dropdown-item" href="#!"><i class="bi bi-sliders2 me-2"></i>Account</a></li>
+                                    <li><a class="dropdown-item" href="#!"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                                    <!-- logout-->
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">
+                                            <i class="bi bi-box-arrow-right me-2"></i>Logout
+                                        </button>
+                                    </form>
+                                </ul>
+                            </li>
+                        </ul>
+                    @endauth
                 </div>
             </div>
         </div>

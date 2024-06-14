@@ -20,6 +20,7 @@
                 <h3 class="text-center mb-3">Sign In</h3>
                 <p class="text-center mb-4">Please enter your login and password!</p>
                 <form>
+                    @csrf
                     <!-- Email input -->
                     <div class="form-floating mb-3">
                         <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
