@@ -14,12 +14,12 @@ class CreateUsersTable extends Migration
         // Creating users table with UUID as the primary key
         Schema::create('users', function (Blueprint $table) {
             $table->uuid('user_id')->primary(); // Using UUID as primary key
-            $table->string('first_name'); // First Name
-            $table->string('last_name');  // Last Name
+            $table->string('firstName'); // First Name
+            $table->string('lastName');  // Last Name
             $table->string('email')->unique(); // Email
             $table->string('password'); // Password
-            $table->string('role'); // Role
-            $table->integer('money'); // Money
+            $table->string('role')->default("user"); // Role
+            $table->integer('money')->default(0); // Money
             $table->timestamps(); // created_at and updated_at
         });
     }

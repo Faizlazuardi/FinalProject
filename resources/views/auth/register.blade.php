@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!--Bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <!--Icon-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
@@ -16,18 +17,18 @@
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card p-4" style="width: 28rem;">
             <h3 class="text-center mb-3">Sign Up</h3>
-            <form method="post">
+            <form method="post" action="{{ route('register') }}">
                 @csrf
                 <div class="row mb-3">
                     <!-- First Name input -->
                     <div class="col">
                         <label for="inputFirstName" class="form-label">First Name</label>
-                        <input type="text" class="form-control" placeholder="First Name" name="firstname">
+                        <input type="text" class="form-control" placeholder="First Name" name="firstName">
                     </div>
                     <!-- Last Name input -->
                     <div class="col">
                         <label for="inputLastName" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" placeholder="Last Name" name="lastname">
+                        <input type="text" class="form-control" placeholder="Last Name" name="lastName">
                     </div>
                 </div>
                 <!-- Email input -->

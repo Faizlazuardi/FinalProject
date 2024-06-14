@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name'); // varchar for name
             $table->text('description'); // text for description
             $table->integer('stock'); // integer for stock
+            $table->integer('price'); // integer for price
             $table->timestamps(); // created_at and updated_at timestamps
         });
     }

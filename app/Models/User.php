@@ -11,9 +11,21 @@ class User extends Authenticatable
 {
     use HasFactory;
     protected $fillable = [
-        'firstname',
-        'lastname',
+        'firstName',
+        'lastName',
         'email',
         'password',
+        'role',
+        'money',
     ];
+    protected $guarded = [
+        'user_id',
+        'created_at',
+        'updated_at',
+    ];
+
+    public function InvoiceHeader()
+    {
+        return $this->hasMany(InvoiceHeader::class);
+    }
 }

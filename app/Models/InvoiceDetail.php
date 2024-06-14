@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class InvoiceDetail extends Model
 {
     use HasFactory;
+
+    public function toys()
+    {
+        return $this->belongsTo(Toy::class);
+    }
 }
