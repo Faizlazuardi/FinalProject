@@ -33,11 +33,27 @@ class UserController extends Controller
         return redirect()->intended('/');
     }
 
-    public function logout(Request $request)
+    public function login(Request $request)
     {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/');
+        // Validasi input dari form
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        // Dapatkan kredensial dari input
+        $credentials = $request->only('email', 'password');
+        $remember = $request->has('remember'); // Periksa apakah checkbox "Remember Me" diaktifkan
+
+        // Coba login dengan opsi "Remember Me"
+        if (Auth::attempt($credentials, $remember)) {
+            // Jika berhasil, redirect ke halaman yang diinginkan
+            return redirect()->intended('/');
+        } else {
+            // Jika gagal, kembalikan ke halaman login dengan pesan kesalahan
+            return back()->withErrors([
+                'email' => 'The provided credentials do not match our records.',
+            ])->onlyInput('email');
+        }
     }
 }

@@ -18,6 +18,8 @@ Route::get('/register', function () {
 
 Route::post('/register', [UserController::class, 'register'])->name('register');
 
+Route::post('/login', [UserController::class, 'login'])->name('login');
+
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::get('/', [CategoryController::class, 'index']);
