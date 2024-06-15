@@ -9,11 +9,11 @@ Route::get('/', function () {
 });
 
 Route::get('/login', function () {
-    return view('/auth/login');
-});
+    return view('auth.login');
+})->name('login');
 
 Route::get('/register', function () {
-    return view('/auth/register');
+    return view('auth.register');
 });
 
 Route::post('/register', [UserController::class, 'register'])->name('register');
