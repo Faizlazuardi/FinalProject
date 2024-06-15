@@ -9,6 +9,9 @@ class Toy extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = [
+        'toy_id',
+        'category_id',];
     protected $fillable = [
         'image',
         'name',
@@ -16,8 +19,6 @@ class Toy extends Model
         'stock',
     ];
     protected $guarded = [
-        'toy_id',
-        'category_id',
         'created_at',
         'updated_at',
     ];
@@ -25,5 +26,10 @@ class Toy extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function invoiceDetails()
+    {
+        return $this->hasMany(InvoiceDetail::class);
     }
 }

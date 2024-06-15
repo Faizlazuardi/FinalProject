@@ -10,8 +10,21 @@ class InvoiceHeader extends Model
 {
     use HasFactory;
 
-    public function toys()
+    protected $primaryKey = [
+        'invoice_header_id',
+        'user_id',];
+    protected $fillable = ['total_price'];
+    protected $guarded = [
+        'created_at',
+        'updated_at',
+    ];
+    public function user()
     {
-        return $this->belongsTo(Toy::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function invoiceDetails()
+    {
+        return $this->hasMany(InvoiceDetail::class);
     }
 }

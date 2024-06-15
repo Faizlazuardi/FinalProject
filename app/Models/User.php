@@ -28,7 +28,7 @@ class User extends Authenticatable
         'updated_at',
     ];
 
-    public function InvoiceHeader()
+    public function invoiceHeaders()
     {
         return $this->hasMany(InvoiceHeader::class);
     }
