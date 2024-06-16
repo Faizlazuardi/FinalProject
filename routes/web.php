@@ -21,5 +21,5 @@ Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
-Route::get('/', [ToyController::class, 'index']);
-Route::get('/{name}', [ToyController::class, 'index']);
+Route::get('/', [ToyController::class, 'display']);
+Route::get('/{name}', [ToyController::class, 'display']);

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ToyController extends Controller
 {
-    public function index($name = null)
+    public function display($name = null)
     {
         $categories = Category::all();
         if ($name) {
