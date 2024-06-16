@@ -14,7 +14,6 @@ class User extends Authenticatable
     protected $primaryKey = 'user_id'; // Menggunakan user_id sebagai primary key
 
     protected $fillable = [
-        'user_id',
         'firstName',
         'lastName',
         'email',
@@ -30,6 +29,6 @@ class User extends Authenticatable
 
     public function invoiceHeaders()
     {
-        return $this->hasMany(InvoiceHeader::class);
+        return $this->hasMany(InvoiceHeader::class,'invoice_header_id');
     }
 }

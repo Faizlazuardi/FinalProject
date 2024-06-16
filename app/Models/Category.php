@@ -9,7 +9,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = ['category_id'];
+    protected $primaryKey = 'category_id';
     protected $fillable = ['name'];
     protected $guarded = [
         'created_at',
@@ -18,6 +18,6 @@ class Category extends Model
 
     public function toys()
     {
-        return $this->hasMany(Toy::class);
+        return $this->hasMany(Toy::class,'toy_id');
     }
 }

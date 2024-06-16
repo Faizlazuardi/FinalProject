@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ToyController;
 
 Route::get('/', function () {
     return view('index');
@@ -17,9 +18,8 @@ Route::get('/register', function () {
 });
 
 Route::post('/register', [UserController::class, 'register'])->name('register');
-
 Route::post('/login', [UserController::class, 'login'])->name('login');
-
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
-Route::get('/', [CategoryController::class, 'index']);
+Route::get('/', [ToyController::class, 'index']);
+Route::get('/{name}', [ToyController::class, 'index']);

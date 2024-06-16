@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('toys', function (Blueprint $table) {
             $table->uuid('toy_id')->primary(); // Use UUID for primary key
-            $table->foreignId('category_id'); // Define category_id column
+            $table->uuid('category_id')->constrained('categories'); // Define category_id column
             $table->string('image'); // varchar for image URL/path
             $table->string('name'); // varchar for name
             $table->text('description'); // text for description

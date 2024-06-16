@@ -11,8 +11,9 @@ class Toy extends Model
 
     protected $primaryKey = [
         'toy_id',
-        'category_id',];
+    ];
     protected $fillable = [
+        'category_id',
         'image',
         'name',
         'description',
@@ -25,11 +26,11 @@ class Toy extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class,'category_id',Category::class);
     }
 
     public function invoiceDetails()
     {
-        return $this->hasMany(InvoiceDetail::class);
+        return $this->hasMany(InvoiceDetail::class,'invoice_detail_id',InvoiceDetail::class);
     }
 }

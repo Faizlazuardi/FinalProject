@@ -12,19 +12,22 @@ class InvoiceHeader extends Model
 
     protected $primaryKey = [
         'invoice_header_id',
-        'user_id',];
-    protected $fillable = ['total_price'];
+    ];
+    protected $fillable = [
+        'user_id',
+        'total_price',
+];
     protected $guarded = [
         'created_at',
         'updated_at',
     ];
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
     public function invoiceDetails()
     {
-        return $this->hasMany(InvoiceDetail::class);
+        return $this->hasMany(InvoiceDetail::class,'invoice_detail_id');
     }
 }
