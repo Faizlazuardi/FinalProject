@@ -8,11 +8,14 @@ use App\Http\Controllers\ToyController;
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/admin', function () {
+    return view('admin.index');
+});
 
 Route::get('/', [CategoryController::class, 'index']);
 
-Route::get('/toys', [ToyController::class, 'index']);
-Route::get('/toys/{name}', [ToyController::class, 'show']);
+//Route::get('/', [ToyController::class, 'index']);
+//Route::get('/{name}', [ToyController::class, 'show']);
 
 Route::get('/register', function () {
     return view('auth.register');

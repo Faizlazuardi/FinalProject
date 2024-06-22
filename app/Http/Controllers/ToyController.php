@@ -10,13 +10,13 @@ class ToyController extends Controller
 {
     public function index()
     {
-        $categories = Category::with('toys')->get(); // Eager load toys with categories
-        return view('index', compact('categories'));
+        $toys = Toy::all();
+        return view('toys.index', compact('toys'));
     }
     public function create()
     {
-        $categories = Category::all();
-        return view('toys.create', compact('categories'));
+        $toys = Toy::all();
+        return view('toys.create', compact('toys'));
     }
 
     public function store(Request $request)
@@ -38,18 +38,12 @@ class ToyController extends Controller
         return redirect()->route('toys.index')->with('success', 'Toy created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         $toy = Toy::findOrFail($id);
-        return view('toys.show', compact('toy'));
+        return view('toys.index', compact('toy'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $toy = Toy::findOrFail($id);
@@ -57,9 +51,6 @@ class ToyController extends Controller
         return view('toys.edit', compact('toy', 'categories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $toy = Toy::findOrFail($id);
@@ -84,9 +75,6 @@ class ToyController extends Controller
         return redirect()->route('toys.index')->with('success', 'Toy updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $toy = Toy::findOrFail($id);

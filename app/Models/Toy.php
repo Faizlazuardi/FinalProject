@@ -18,6 +18,7 @@ class Toy extends Model
         'name',
         'description',
         'stock',
+        'price',
     ];
     protected $guarded = [
         'created_at',

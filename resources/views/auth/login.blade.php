@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <!--Bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <!--Icon-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <title>Sign In</title>
-</head>
-<body class="bg-dark">
-    <div class="container d-flex justify-content-center align-items-center vh-100">
+@extends('partial.layout')
+@section('content')
+    <div class="bg-dark d-flex justify-content-center align-items-center vh-100">
         <div class="card" style="width: 24rem;">
             <div class="card-body">
                 <h3 class="text-center mb-3">Sign In</h3>
@@ -59,5 +45,4 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+@endsection
