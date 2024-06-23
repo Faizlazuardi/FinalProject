@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
     <div class="container px-0 px-lg-0">
         <!-- Left nav -->
         <div class="d-flex align-items-center">
