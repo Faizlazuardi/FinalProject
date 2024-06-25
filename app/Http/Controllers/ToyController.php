@@ -15,18 +15,20 @@ class ToyController extends Controller
     }
     public function create()
     {
-        $toys = Toy::all();
-        return view('toys.create', compact('toys'));
+        $categories = Category::all();
+        return view('toys.create', compact('categories'));
     }
+
 
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'category_id' => 'required|exists:categories,id',
             'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
+            'category_id' => 'required|exists:categories,id',
+            'image' => 'nullable|image|max:2048',
+            'price' => 'required|integer|min:0',
             'stock' => 'required|integer|min:0',
-            'image' => 'nullable|image|max:2048'
+            'description' => 'nullable|string',
         ]);
 
         if ($request->hasFile('image')) {
