@@ -29,6 +29,6 @@ class User extends Authenticatable
 
     public function invoiceHeaders()
     {
-        return $this->hasMany(InvoiceHeader::class,'invoice_header_id');
+        return $this->hasMany(InvoiceHeader::class, 'invoice_header_id');
     }
 }

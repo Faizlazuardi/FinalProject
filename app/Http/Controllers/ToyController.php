@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Toy;
@@ -42,15 +43,15 @@ class ToyController extends Controller
 
     public function show(string $id)
     {
-        $toy = Toy::findOrFail($id);
-        return view('toys.index', compact('toy'));
+        $toy = Toy::findOrFail($id); // Mencari mainan berdasarkan ID
+        return view('toys.show', compact('toy'));
     }
 
     public function edit(string $id)
     {
         $toy = Toy::findOrFail($id);
         $categories = Category::all();
-        return view('toys.edit', compact('toy', 'categories'));
+        return view('toys.edit', compact('toys', 'categories'));
     }
 
     public function update(Request $request, string $id)

@@ -5,12 +5,16 @@
             <a class="navbar-brand" href="{{ url('/') }}">WonderToys</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">Category</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{{ url('/') }}">All Products</a></li>
-                        <li><hr class="dropdown-divider" /></li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
                         @foreach ($categories as $category)
-                            <li><a class="dropdown-item" href="{{ url('/' . $category->name) }}">{{ $category->name }}</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/category=' . $category->id) }}"
+                                    name="category">{{ $category->name }}</a></li>
                         @endforeach
                     </ul>
                 </li>
@@ -45,11 +49,13 @@
                     <!-- User Icon -->
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link" id="navbarDropdownUser" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-person-circle" style="font-size: 1.6rem;"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownUser">
-                                <li><a class="dropdown-item" href="#!"><i class="bi bi-sliders2 me-2"></i>Account</a></li>
+                                <li><a class="dropdown-item" href="#!"><i class="bi bi-sliders2 me-2"></i>Account</a>
+                                </li>
                                 <li><a class="dropdown-item" href="#!"><i class="bi bi-gear me-2"></i>Settings</a></li>
                                 <!-- logout-->
                                 <form method="POST" action="{{ route('logout') }}">
@@ -66,4 +72,3 @@
         </div>
     </div>
 </nav>
-

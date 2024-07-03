@@ -18,6 +18,6 @@ class Category extends Model
 
     public function toys()
     {
-        return $this->hasMany(Toy::class,'toy_id');
+        return $this->hasMany(Toy::class, 'toy_id');
     }
 }

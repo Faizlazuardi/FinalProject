@@ -1,17 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\indexController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ToyController;
+
 //Home Page Route
 Route::get('/', function () {
     return view('index');
 });
-Route::prefix('index')->group(function () {
-    Route::get('/',[CategoryController::class, 'index']);
-    Route::get('/', [ToyController::class, 'index']);
-    Route::get('/{name}', [ToyController::class, 'show']);
+Route::get('/', [IndexController::class,'index']);
+
+//filter
+Route::get('/{name}', function () {
+    return view('index');
 });
 
 //Admin Page Route
@@ -22,6 +25,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('toys', ToyController::class);
     Route::resource('categories', CategoryController::class);
 });
+
 //Create Toys Route
 Route::get('/admin/create', function () {
     return view('toys.create');
