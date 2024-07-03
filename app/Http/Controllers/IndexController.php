@@ -15,11 +15,9 @@ class IndexController extends Controller
         $toys = Toy::query();
 
         // Filter toys by category
-        $toys->when($request->category, function ($query) use ($request) {
+        $toys = Toy::when($request->category, function ($query) use ($request) {
             return $query->where('category_id', $request->category);
-        });
-
-        $toys = $toys->get();
+        })->get();
 
         return view('index', compact('categories', 'toys'));
     }

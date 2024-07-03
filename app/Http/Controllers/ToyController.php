@@ -43,8 +43,8 @@ class ToyController extends Controller
 
     public function show(string $id)
     {
-        $toy = Toy::findOrFail($id); // Mencari mainan berdasarkan ID
-        return view('toys.show', compact('toy'));
+        $toy = Toy::findOrFail($id);
+        return view('toys.index', compact('toy'));
     }
 
     public function edit(string $id)

@@ -83,7 +83,7 @@
                         </div>
                         <!-- Add Button -->
                         <div class="pb-3">
-                            <a class="btn btn-primary" href="{{ url('/admin/create') }}">+ Tambah Data</a>
+                            <a class="btn btn-primary" action="{{ route('create') }}">+ Tambah Data</a>
                         </div>
                         <!--Table-->
                         <table class="table table-striped table-responsive">

@@ -12,11 +12,6 @@ Route::get('/', function () {
 });
 Route::get('/', [IndexController::class,'index']);
 
-//filter
-Route::get('/{name}', function () {
-    return view('index');
-});
-
 //Admin Page Route
 Route::get('/admin', function () {
     return view('admin.index');
@@ -29,12 +24,12 @@ Route::prefix('admin')->group(function () {
 //Create Toys Route
 Route::get('/admin/create', function () {
     return view('toys.create');
-});
+})->name('create');
 
 //Auth Register Route
 Route::get('/register', function () {
     return view('auth.register');
-});
+})->name('register');
 Route::post('/register', [UserController::class, 'register'])->name('register');
 
 //Auth Login Route
