@@ -11,15 +11,15 @@ class ToyController extends Controller
 {
     public function index()
     {
-        $toys = Toy::all();
-        return view('toys.index', compact('toys'));
+        $toys = Toy::paginate(9);
+        return view('admin.toys', compact('toys'));
     }
+
     public function create()
     {
         $categories = Category::all();
         return view('toys.create', compact('categories'));
     }
-
 
     public function store(Request $request)
     {
@@ -35,16 +35,14 @@ class ToyController extends Controller
         if ($request->hasFile('image')) {
             $validated['image'] = $request->file('image')->store('images/toys', 'public');
         }
-
         Toy::create($validated);
-
-        return redirect()->route('toys.index')->with('success', 'Toy created successfully.');
+        return redirect()->route('admin.toys')->with('success', 'Toy created successfully.');
     }
 
     public function show(string $id)
     {
         $toy = Toy::findOrFail($id);
-        return view('toys.index', compact('toy'));
+        return view('admin.toys', compact('toy'));
     }
 
     public function edit(string $id)
@@ -72,9 +70,7 @@ class ToyController extends Controller
             }
             $validated['image'] = $request->file('image')->store('images/toys', 'public');
         }
-
         $toy->update($validated);
-
         return redirect()->route('toys.index')->with('success', 'Toy updated successfully.');
     }
 
@@ -85,6 +81,6 @@ class ToyController extends Controller
             Storage::disk('public')->delete($toy->image);
         }
         $toy->delete();
-        return redirect()->route('toys.index')->with('success', 'Toy deleted successfully.');
+        return redirect()->route('admin.toys')->with('success', 'Toy deleted successfully.');
     }
 }

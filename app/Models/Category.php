@@ -2,22 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Toy;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
     use HasFactory;
 
     protected $primaryKey = 'category_id';
-    protected $fillable = ['name'];
-    protected $guarded = [
+    protected $fillable = [
+        'name',
         'created_at',
         'updated_at',
     ];
 
     public function toys()
     {
-        return $this->hasMany(Toy::class, 'toy_id');
+        return $this->hasMany(Toy::class, 'category_id', 'category_id');
     }
 }

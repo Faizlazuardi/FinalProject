@@ -13,7 +13,7 @@
                             <hr class="dropdown-divider" />
                         </li>
                         @foreach ($categories as $category)
-                            <li><a value="{{ $category->category_id }}" class="dropdown-item" name="category">{{ $category->name }}</a></li>
+                            <li><a href=" /Toy/{{ $category->name }}" class="dropdown-item" name="category">{{ $category->name }}</a></li>
                         @endforeach
                     </ul>
                 </li>
@@ -24,13 +24,13 @@
             <div class="ms-auto d-flex align-items-center">
                 @guest
                     <!-- Sign In Button -->
-                    <form class="d-flex me-2" action="{{ url('/login') }}" method="get">
+                    <form class="d-flex me-2" action="{{ route('login') }}" method="get">
                         <button class="btn btn-outline-dark" type="submit">
                             Sign In
                         </button>
                     </form>
                     <!-- Sign Up Button -->
-                    <form class="d-flex me-2" action="{{ url('/register') }}" method="get">
+                    <form class="d-flex me-2" action="{{ route('register') }}" method="get">
                         <button class="btn btn-outline-dark" type="submit">
                             Sign Up
                         </button>

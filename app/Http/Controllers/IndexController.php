@@ -12,13 +12,13 @@ class IndexController extends Controller
     public function index(Request $request)
     {
         $categories = Category::all();
-        $toys = Toy::query();
-
-        // Filter toys by category
-        $toys = Toy::when($request->category, function ($query) use ($request) {
-            return $query->where('category_id', $request->category);
-        })->get();
-
+        $toys = Toy::all();
         return view('index', compact('categories', 'toys'));
+    }
+    public function show(string $category)
+    {
+        $categories = Category::all();
+        $toy = Toy::findOrFail($category);
+        return view('index', compact('categories','toy'));
     }
 }
