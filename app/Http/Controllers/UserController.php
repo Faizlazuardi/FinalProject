@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function index(){
+        $users = user::paginate(10);
+        return view('admin.users', compact('users'));
+    }
     public function register(Request $request)
     {
         // Validasi input dari form

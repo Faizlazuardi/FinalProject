@@ -7,9 +7,6 @@
             <div class="nav flex-column nav-pills">
                 <a class="text-white nav-link active" href="{{ url('/admin') }}">
                     <i class="bi bi-grid me-2"></i>Dashboard</a>
-                <a class="text-white nav-link" href="{{ url('/admin/categories') }}">
-                    <i class="bi bi-box-seam me-2"></i>Categories
-                </a>
                 <a class="text-white nav-link" href="{{ url('/admin/toys') }}">
                     <i class="bi bi-box-seam me-2"></i>Toys
                 </a>
@@ -30,25 +27,25 @@
                     <div class="card text-white bg-primary mb-3">
                         <div class="card-body">
                             <h5 class="card-title">Total Users</h5>
-                            <p class="card-text">1234</p>
+                            {{-- <p class="card-text">{{ $totalUsers }}</p> --}}
                         </div>
                     </div>
                 </div>
-                <!--Products-->
+                <!--Toys-->
                 <div class="col-md-3 col-sm-6">
                     <div class="card text-white bg-success mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">Total Products</h5>
-                            <p class="card-text">5678</p>
+                            <h5 class="card-title">Total Toys</h5>
+                            {{-- <p class="card-text">{{ $totalToys }}</p> --}}
                         </div>
                     </div>
                 </div>
-                <!--Transaction-->
+                <!--Categories-->
                 <div class="col-md-3 col-sm-6">
                     <div class="card text-white bg-warning mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">Total Transactions</h5>
-                            <p class="card-text">91011</p>
+                            <h5 class="card-title">Total Categories</h5>
+                            {{-- <p class="card-text">{{ $totalCategories }}</p> --}}
                         </div>
                     </div>
                 </div>
@@ -57,7 +54,7 @@
                     <div class="card text-white bg-danger mb-3">
                         <div class="card-body">
                             <h5 class="card-title">Total Revenue</h5>
-                            <p class="card-text">$123456</p>
+                            {{-- <p class="card-text">${{ number_format($totalRevenue, 2) }}</p> --}}
                         </div>
                     </div>
                 </div>

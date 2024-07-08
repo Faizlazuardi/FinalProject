@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\UserController;
@@ -12,14 +13,11 @@ Route::get('/', function () {
     return view('index');
 });
 Route::get('/', [IndexController::class,'index']);
-Route::get('/Toy/{category}', [indexController::class,'show']);
+Route::get('/category={category}', [indexController::class,'show']);
 
 //Admin Page Route
 Route::get('/admin', function () {
     return view('admin.index');
-});
-Route::get('/admin/categories', function () {
-    return view('admin.categories');
 });
 Route::get('/admin/toys', function () {
     return view('admin.toys');
@@ -28,8 +26,9 @@ Route::get('/admin/users', function () {
     return view('admin.users');
 });
 Route::prefix('admin')->group(function () {
+    //Route::get('/', [AdminController::class, 'index']);
+    Route::get('/', [UserController::class,'index']);
     Route::resource('toys', ToyController::class);
-    Route::resource('categories', CategoryController::class);
 });
 
 //Create Toys Route

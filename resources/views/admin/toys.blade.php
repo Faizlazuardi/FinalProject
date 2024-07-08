@@ -7,9 +7,6 @@
             <div class="nav flex-column nav-pills">
                 <a class="text-white nav-link" href="{{ url('/admin') }}">
                     <i class="bi bi-grid me-2"></i>Dashboard</a>
-                <a class="text-white nav-link" href="{{ url('/admin/categories') }}">
-                    <i class="bi bi-box-seam me-2"></i>Categories
-                </a>
                 <a class="text-white nav-link active" href="{{ url('/admin/toys') }}">
                     <i class="bi bi-box-seam me-2"></i>Toys
                 </a>

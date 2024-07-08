@@ -9,9 +9,17 @@ use Illuminate\Support\Facades\Storage;
 
 class ToyController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $toys = Toy::paginate(9);
+        $katakunci = $request->get('katakunci');
+        $query = Toy::query();
+
+        if (!empty($katakunci)) {
+            $query->where('name', 'LIKE', "%$katakunci%");
+        }
+
+        $toys = $query->paginate(9);
+
         return view('admin.toys', compact('toys'));
     }
 
@@ -71,7 +79,7 @@ class ToyController extends Controller
             $validated['image'] = $request->file('image')->store('images/toys', 'public');
         }
         $toy->update($validated);
-        return redirect()->route('toys.index')->with('success', 'Toy updated successfully.');
+        return redirect()->route('admin.toys')->with('success', 'Toy updated successfully.');
     }
 
     public function destroy(string $id)
