@@ -23,38 +23,29 @@
             </div>
             <div class="row">
                 <!--Users-->
-                <div class="col-md-3 col-sm-6">
-                    <div class="card text-white bg-primary mb-3">
+                <div class="col-md-4 col-sm-6 mb-3">
+                    <div class="card text-white bg-primary w-100">
                         <div class="card-body">
                             <h5 class="card-title">Total Users</h5>
-                            {{-- <p class="card-text">{{ $totalUsers }}</p> --}}
+                            <p class="card-text">{{ $totalUsers }}</p>
                         </div>
                     </div>
                 </div>
                 <!--Toys-->
-                <div class="col-md-3 col-sm-6">
-                    <div class="card text-white bg-success mb-3">
+                <div class="col-md-4 col-sm-6 mb-3">
+                    <div class="card text-white bg-success w-100">
                         <div class="card-body">
                             <h5 class="card-title">Total Toys</h5>
-                            {{-- <p class="card-text">{{ $totalToys }}</p> --}}
-                        </div>
-                    </div>
-                </div>
-                <!--Categories-->
-                <div class="col-md-3 col-sm-6">
-                    <div class="card text-white bg-warning mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Total Categories</h5>
-                            {{-- <p class="card-text">{{ $totalCategories }}</p> --}}
+                            <p class="card-text">{{ $totalToys }}</p>
                         </div>
                     </div>
                 </div>
                 <!--Revenue-->
-                <div class="col-md-3 col-sm-6">
-                    <div class="card text-white bg-danger mb-3">
+                <div class="col-md-4 col-sm-6 mb-3">
+                    <div class="card text-white bg-warning w-100">
                         <div class="card-body">
                             <h5 class="card-title">Total Revenue</h5>
-                            {{-- <p class="card-text">${{ number_format($totalRevenue, 2) }}</p> --}}
+                            <p class="card-text">${{ number_format($totalRevenue, 2) }}</p>
                         </div>
                     </div>
                 </div>

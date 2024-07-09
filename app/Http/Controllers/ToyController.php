@@ -13,19 +13,17 @@ class ToyController extends Controller
     {
         $katakunci = $request->get('katakunci');
         $query = Toy::query();
-
         if (!empty($katakunci)) {
             $query->where('name', 'LIKE', "%$katakunci%");
         }
-
+        $categories = category::all();
         $toys = $query->paginate(9);
-
-        return view('admin.toys', compact('toys'));
+        return view('admin.toys', compact('toys','categories'));
     }
 
     public function create()
     {
-        $categories = Category::all();
+        $categories = category::all();
         return view('toys.create', compact('categories'));
     }
 

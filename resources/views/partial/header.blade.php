@@ -13,7 +13,7 @@
                             <hr class="dropdown-divider" />
                         </li>
                         @foreach ($categories as $category)
-                            <li><a href=" /category={{ $category->name }}" class="dropdown-item" name="category">{{ $category->name }}</a></li>
+                            <li><a href=" /?category={{ $category->name }}" class="dropdown-item" name="category">{{ $category->name }}</a></li>
                         @endforeach
                     </ul>
                 </li>

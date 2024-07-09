@@ -33,7 +33,7 @@
                 </div>
                 <!-- Add Button -->
                 <div class="pb-3">
-                    <a class="btn btn-primary" action="{{ route('create') }}">+ Tambah Data</a>
+                    <a class="btn btn-primary" href="{{ url('/admin/create') }}">+ Tambah Data</a>
                 </div>
                 <!--Table-->
                 <table class="table table-responsive">
@@ -42,15 +42,15 @@
                             <th class="col-md-1">#</th>
                             <th class="col-md-5">Name</th>
                             <th class="col-md-3">
-                                {{-- <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                                <div class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-dark" id="navbarDropdown" href="#" role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">Category</a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         @foreach ($categories as $category)
                                             <li><a class="dropdown-item" name="category">{{ $category->name }}</a></li>
                                         @endforeach
-                                    </ul>
-                                </li> --}}
+                                    </div>
+                                </div>
                             </th>
                             <th class="col-md-2">price</th>
                             <th class="col-md-1">Stock</th>
