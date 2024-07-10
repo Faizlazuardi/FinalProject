@@ -13,22 +13,22 @@
             </div>
 
             <div class="mb-3">
-                <label for="category" class="form-label">Category</label>
-                <select class="form-select" id="category" name="category">
+                <label for="category_id" class="form-label">Category</label>
+                <select class="form-select" id="category_id" name="category_id">
                     <option selected disabled>Choose Category</option>
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        <option value="{{ $category->category_id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
             </div>
 
             <div class="mb-3">
-                <label for="formFile" class="form-label">Image</label>
-                <input class="form-control" type="file" id="formFile" name="image">
+                <label for="image" class="form-label">Image</label>
+                <input class="form-control" type="file" id="image" name="image">
             </div>
 
             <div class="mb-3">
-                <label for="stock" class="form-label">Price</label>
+                <label for="price" class="form-label">Price</label>
                 <input type="text" class="form-control" id="price" name="price">
             </div>
 

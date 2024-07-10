@@ -12,7 +12,11 @@ class InvoiceDetail extends Model
     use HasFactory;
 
     protected $primaryKey = 'invoice_detail_id';
-    protected $guarded = [
+    protected $fillable = [
+        'invoice_header_id',
+        'toy_id',
+        'quantity',
+        'subtotal',
         'created_at',
         'updated_at',
     ];

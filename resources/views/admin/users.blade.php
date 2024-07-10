@@ -36,7 +36,7 @@
                     <tbody>
                         @foreach ($users as $index => $user)
                             <tr>
-                                <td>{{ $index + $user->firstItem() }}</td>
+                                <td>{{ $index + $users->firstItem() }}</td>
                                 <td>{{ $user->firstName }} {{ $user->lastName }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->money }}</td>

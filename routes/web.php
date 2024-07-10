@@ -4,16 +4,14 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ToyController;
-use App\Models\Toy;
 
 //Home Page Route
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/', [IndexController::class,'index']);
-Route::get('/?category={category}', [indexController::class,'show']);
+Route::get('/', [IndexController::class, 'index']);
+Route::get('/?category={category}', [indexController::class, 'show']);
 
 //Admin Page Route
 Route::get('/admin', function () {
@@ -25,15 +23,14 @@ Route::get('/admin/toys', function () {
 Route::get('/admin/users', function () {
     return view('admin.users');
 });
-Route::prefix('admin')->group(function () {
-    Route::get('/', [AdminController::class, 'index']);
-    //Route::get('/', [UserController::class,'index']);
-    Route::resource('toys', ToyController::class);
+Route::get('/admin/toys/create', function () {
+    return view('toys.create');
 });
 
-//Create Toys Route
-Route::get('/admin/create', function () {
-    return view('toys.create');
+Route::prefix('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'index']);
+    Route::get('/users', [UserController::class, 'index']);
+    Route::resource('toys', ToyController::class);
 });
 
 //Auth Register Route
@@ -50,4 +47,3 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 
 //Auth Logout Route
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
-

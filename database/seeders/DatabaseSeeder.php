@@ -21,21 +21,18 @@ class DatabaseSeeder extends Seeder
             'role' =>'admin',
         ]);
 
-        Category::create([
-            'category_id' => (string) Str::uuid(),
-            'name' => 'Puzzles',
-        ]);
-        Category::create([
-            'category_id' => (string) Str::uuid(),
-            'name' => 'Action Figures',
-        ]);
-        Category::create([
-            'category_id' => (string) Str::uuid(),
-            'name' => 'Dolls',
-        ]);
-        Category::create([
-            'category_id' => (string) Str::uuid(),
-            'name' => 'Board Games',
-        ]);
+        $categories = [
+            'Puzzles',
+            'Action Figures',
+            'Dolls',
+            'Board Games'
+        ];
+
+        foreach ($categories as $categoryName) {
+            Category::updateOrCreate(
+                ['name' => $categoryName],
+                ['category_id' => (string) Str::uuid()]
+            );
+        }
     }
 }

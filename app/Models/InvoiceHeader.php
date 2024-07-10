@@ -12,7 +12,9 @@ class InvoiceHeader extends Model
     use HasFactory;
 
     protected $primaryKey = 'invoice_header_id';
-    protected $guarded = [
+    protected $fillable = [
+        'user_id',
+        'total_price',
         'created_at',
         'updated_at',
     ];

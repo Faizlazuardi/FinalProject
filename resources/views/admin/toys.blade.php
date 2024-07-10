@@ -33,7 +33,7 @@
                 </div>
                 <!-- Add Button -->
                 <div class="pb-3">
-                    <a class="btn btn-primary" href="{{ url('/admin/create') }}">+ Tambah Data</a>
+                    <a class="btn btn-primary" href="{{ url('/admin/toys/create') }}">+ Tambah Data</a>
                 </div>
                 <!--Table-->
                 <table class="table table-responsive">

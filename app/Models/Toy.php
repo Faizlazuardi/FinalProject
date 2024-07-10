@@ -12,7 +12,13 @@ class Toy extends Model
     use HasFactory;
 
     protected $primaryKey = 'toy_id';
-    protected $guarded = [
+    protected $fillable = [
+        'category_id',
+        'image',
+        'name',
+        'description',
+        'stock',
+        'price',
         'created_at',
         'updated_at',
     ];

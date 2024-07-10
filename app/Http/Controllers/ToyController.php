@@ -23,7 +23,7 @@ class ToyController extends Controller
 
     public function create()
     {
-        $categories = category::all();
+        $categories = Category::all();
         return view('toys.create', compact('categories'));
     }
 
@@ -31,7 +31,7 @@ class ToyController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'required|exists:categories,category_id',
             'image' => 'nullable|image|max:2048',
             'price' => 'required|integer|min:0',
             'stock' => 'required|integer|min:0',

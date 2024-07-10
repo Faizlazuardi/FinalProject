@@ -12,6 +12,12 @@ class User extends Authenticatable
 
     protected $primaryKey = 'user_id';
     protected $guarded = [
+        'firstname',
+        'lastname',
+        'email',
+        'password',
+        'role',
+        'money',
         'created_at',
         'updated_at',
     ];
