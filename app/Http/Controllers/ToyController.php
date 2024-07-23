@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Toy;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class ToyController extends Controller
@@ -18,7 +20,7 @@ class ToyController extends Controller
         }
         $categories = category::all();
         $toys = $query->paginate(9);
-        return view('admin.toys', compact('toys','categories'));
+        return view('toys.index', compact('toys', 'categories'));
     }
 
     public function create()
@@ -29,26 +31,36 @@ class ToyController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'category_id' => 'required|exists:categories,id',
             'name' => 'required|string|max:255',
-            'category_id' => 'required|exists:categories,category_id',
-            'image' => 'nullable|image|max:2048',
-            'price' => 'required|integer|min:0',
-            'stock' => 'required|integer|min:0',
             'description' => 'nullable|string',
+            'stock' => 'required|integer|min:0',
+            'price' => 'required|numeric|min:0',
         ]);
 
-        if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('images/toys', 'public');
-        }
-        Toy::create($validated);
-        return redirect()->route('admin.toys')->with('success', 'Toy created successfully.');
+        $image = $request->file('image');
+        $imgName = time() . "_" . $image->getClientOriginalName();
+        $image->move(public_path("img"), $imgName);
+
+        $category = Category::find($request->input('category_id'));
+
+        Toy::create([
+            'category_id' => $category->id,
+            'image' => $imgName,
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'stock' => $request->input('stock'),
+            'price' => $request->input('price'),
+        ]);
+        return redirect()->route('toys.index')->with('success', 'Toy created successfully.');
     }
 
     public function show(string $id)
     {
         $toy = Toy::findOrFail($id);
-        return view('admin.toys', compact('toy'));
+        return view('toys.index', compact('toy'));
     }
 
     public function edit(string $id)
@@ -87,6 +99,6 @@ class ToyController extends Controller
             Storage::disk('public')->delete($toy->image);
         }
         $toy->delete();
-        return redirect()->route('admin.toys')->with('success', 'Toy deleted successfully.');
+        return redirect()->route('toys.index')->with('success', 'Toy deleted successfully.');
     }
 }

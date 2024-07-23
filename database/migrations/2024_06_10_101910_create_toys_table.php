@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('toys', function (Blueprint $table) {
-            $table->uuid('toy_id')->primary(); // Use UUID for primary key
-            $table->uuid('category_id')->constrained('categories'); // Define category_id column
+            $table->uuid('id')->primary(); // Use UUID for primary key
+            $table->foreignUuid('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade'); // Define category_id column as UUID
             $table->string('image'); // varchar for image URL/path
             $table->string('name'); // varchar for name
             $table->text('description'); // text for description

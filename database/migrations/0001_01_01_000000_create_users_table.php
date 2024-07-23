@@ -12,7 +12,7 @@ class CreateUsersTable extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->uuid('user_id')->primary(); // Using UUID as primary key
+            $table->uuid('id')->primary(); // Using UUID as primary key
             $table->string('firstName'); // First Name
             $table->string('lastName');  // Last Name
             $table->string('email')->unique(); // Email

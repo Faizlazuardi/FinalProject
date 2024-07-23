@@ -10,9 +10,6 @@
                 <a class="text-white nav-link" href="{{ url('/admin/toys') }}">
                     <i class="bi bi-box-seam me-2"></i>Toys
                 </a>
-                <a class="text-white nav-link" href="{{ url('/admin/users') }}">
-                    <i class="bi bi-people me-2"></i>Users
-                </a>
             </div>
         </nav>
         <!-- Main content -->

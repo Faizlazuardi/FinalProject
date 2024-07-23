@@ -12,19 +12,18 @@ Route::get('/', function () {
 });
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/?category={category}', [indexController::class, 'show']);
+Route::get('/?toy={toy}', [indexController::class, 'detail']);
 
 //Admin Page Route
 Route::get('/admin', function () {
     return view('admin.index');
 });
-Route::get('/admin/toys', function () {
-    return view('admin.toys');
-});
-Route::get('/admin/users', function () {
-    return view('admin.users');
-});
+
 Route::get('/admin/toys/create', function () {
     return view('toys.create');
+});
+Route::get('/admin/toys', function () {
+    return view('toys.index');
 });
 
 Route::prefix('admin')->group(function () {

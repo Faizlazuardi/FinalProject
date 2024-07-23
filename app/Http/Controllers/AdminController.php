@@ -12,7 +12,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $totalUsers = User::count();
+        $totalUsers = User::where('role', 'user')->count();
         $totalToys = Toy::count();
         $totalRevenue = InvoiceHeader::sum('total_price');
 

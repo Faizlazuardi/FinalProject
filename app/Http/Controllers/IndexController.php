@@ -21,4 +21,10 @@ class IndexController extends Controller
         $toy = Toy::findOrFail($category);
         return view('index', compact('categories','toy'));
     }
+    public function detail(Request $request)
+    {
+        $toyName = $request->input('toy');
+        $toy = Toy::where('name', $toyName)->firstOrFail();
+        return view('index', compact('toy'));
+    }
 }

@@ -1,6 +1,6 @@
 @extends('partial.layout')
 @section('content')
-    <form method="post" action="{{ route('toys.store') }}">
+    <form method="post" action="{{ route('toys.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="p-3 bg-body rounded shadow-sm vh-100">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
@@ -17,7 +17,7 @@
                 <select class="form-select" id="category_id" name="category_id">
                     <option selected disabled>Choose Category</option>
                     @foreach ($categories as $category)
-                        <option value="{{ $category->category_id }}">{{ $category->name }}</option>
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -39,7 +39,7 @@
 
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" name="description" style="height: 150px;"
+                <textarea class="form-control" id="description" name="description" style="height: 120px;"
                     placeholder="Enter description here"></textarea>
             </div>
 

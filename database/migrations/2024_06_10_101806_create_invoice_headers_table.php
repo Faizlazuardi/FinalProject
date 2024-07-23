@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('invoice_headers', function (Blueprint $table) {
-            $table->uuid('invoice_header_id')->primary(); // Use UUID for primary key
-            $table->uuId('user_id')->constrained('users'); // Define user_id column
+            $table->uuid('id')->primary(); // Use UUID for primary key
+            $table->foreignUuid('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade'); // Define user_id column
             $table->integer('total_price'); // Integer for total price
             $table->timestamps(); // created_at and updated_at timestamps
         });

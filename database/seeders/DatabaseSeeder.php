@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Toy;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Str;
@@ -12,14 +13,16 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        User::create([
-            'user_id' => (string) Str::uuid(),
-            'firstname' => 'admin',
-            'lastname' => 'admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('admin123'),
-            'role' =>'admin',
-        ]);
+        User::updateOrCreate(
+            ['email' => 'admin@gmail.com'],
+            [
+                'id' => (string) Str::uuid(),
+                'firstname' => 'admin',
+                'lastname' => 'admin',
+                'password' => bcrypt('admin123'),
+                'role' => 'admin',
+            ]
+        );
 
         $categories = [
             'Puzzles',
@@ -27,11 +30,10 @@ class DatabaseSeeder extends Seeder
             'Dolls',
             'Board Games'
         ];
-
-        foreach ($categories as $categoryName) {
+        foreach ($categories as $category) {
             Category::updateOrCreate(
-                ['name' => $categoryName],
-                ['category_id' => (string) Str::uuid()]
+                ['name' => $category],
+                ['id' => (string) Str::uuid()]
             );
         }
     }
