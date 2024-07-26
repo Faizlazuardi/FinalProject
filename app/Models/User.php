@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory,HasUuids;
 
     protected $primaryKey = 'id';
     protected $fillable = [
@@ -21,8 +21,8 @@ class User extends Authenticatable
         'money',
     ];
 
-    public function invoiceHeaders()
+    public function invoice()
     {
-        return $this->hasMany(InvoiceHeader::class, 'user_id', 'id');
+        return $this->hasMany(Invoice::class, 'user_id', 'id');
     }
 }

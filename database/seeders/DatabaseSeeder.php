@@ -36,5 +36,6 @@ class DatabaseSeeder extends Seeder
                 ['id' => (string) Str::uuid()]
             );
         }
+        Toy::factory(5)->create();
     }
 }

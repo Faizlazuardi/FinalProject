@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('invoice_details', function (Blueprint $table) {
             $table->uuid('id')->primary(); // Use UUID for primary key
-            $table->foreignUuid('invoice_header_id')->constrained()->onUpdate('cascade')->onDelete('cascade'); // Define invoice_header_id column as UUID
+            $table->foreignUuid('invoice_id')->constrained()->onUpdate('cascade')->onDelete('cascade'); // Define invoice_header_id column as UUID
             $table->foreignUuid('toy_id')->constrained(); // Define toy_id column as UUID
             $table->integer('quantity'); // integer for quantity
             $table->integer('subTotal'); // integer for sub-total

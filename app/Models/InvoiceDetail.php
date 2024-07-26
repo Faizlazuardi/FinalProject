@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\Toy;
-use App\Models\InvoiceHeader;
+use App\Models\Invoice;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,9 +20,9 @@ class InvoiceDetail extends Model
         'subTotal',
     ];
 
-    public function invoiceHeader()
+    public function invoice()
     {
-        return $this->belongsTo(InvoiceHeader::class, 'invoice_header_id', 'id');
+        return $this->belongsTo(Invoice::class, 'invoice_header_id', 'id');
     }
 
     public function toy()

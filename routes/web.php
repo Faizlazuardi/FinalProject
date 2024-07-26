@@ -10,9 +10,9 @@ use App\Http\Controllers\ToyController;
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/', [IndexController::class, 'index']);
-Route::get('/?category={category}', [indexController::class, 'show']);
-Route::get('/?toy={toy}', [indexController::class, 'detail']);
+Route::get('/', [IndexController::class, 'index'])->name('home');
+Route::get('/category/{id}', [IndexController::class, 'show'])->name('toy.show');
+Route::get('/toy/{id}', [IndexController::class, 'detail'])->name('toy.detail');
 
 //Admin Page Route
 Route::get('/admin', function () {

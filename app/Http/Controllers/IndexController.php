@@ -5,26 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Toy;
-use App\Models\User;
 
 class IndexController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $categories = Category::all();
         $toys = Toy::all();
         return view('index', compact('categories', 'toys'));
     }
-    public function show(string $category)
+
+    public function show($id)
     {
         $categories = Category::all();
-        $toy = Toy::findOrFail($category);
-        return view('index', compact('categories','toy'));
+        $toys = Toy::where('category_id', $id)->get();
+        return view('index', compact('categories', 'toys'));
     }
-    public function detail(Request $request)
+
+    public function detail($id)
     {
-        $toyName = $request->input('toy');
-        $toy = Toy::where('name', $toyName)->firstOrFail();
-        return view('index', compact('toy'));
+        $categories = Category::all();
+        $toy = Toy::findOrFail($id);
+        return view('toys.detail', compact('categories', 'toy'));
     }
 }

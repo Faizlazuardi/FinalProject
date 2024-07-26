@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Toy;
 use App\Models\Category;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -35,7 +34,7 @@ class ToyController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'category_id' => 'required|exists:categories,id',
             'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
+            'description' => 'required|string',
             'stock' => 'required|integer|min:0',
             'price' => 'required|numeric|min:0',
         ]);
@@ -44,15 +43,13 @@ class ToyController extends Controller
         $imgName = time() . "_" . $image->getClientOriginalName();
         $image->move(public_path("img"), $imgName);
 
-        $category = Category::find($request->input('category_id'));
-
         Toy::create([
-            'category_id' => $category->id,
+            'category_id' => $request->category_id,
             'image' => $imgName,
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-            'stock' => $request->input('stock'),
-            'price' => $request->input('price'),
+            'name' => $request->name,
+            'description' => $request->description,
+            'stock' => $request->stock,
+            'price' => $request->price,
         ]);
         return redirect()->route('toys.index')->with('success', 'Toy created successfully.');
     }

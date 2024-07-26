@@ -44,7 +44,7 @@
                                         data-bs-toggle="dropdown" aria-expanded="false">Category</a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         @foreach ($categories as $category)
-                                            <li><a class="dropdown-item" name="category">{{ $category->name }}</a></li>
+                                            <li><a class="dropdown-item" value="{{ $category->id }}" name="category">{{ $category->name }}</a></li>
                                         @endforeach
                                     </div>
                                 </div>

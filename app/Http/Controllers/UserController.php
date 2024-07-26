@@ -50,7 +50,8 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials, $remember)) {
             return redirect()->intended('/');
-        } else {
+        }
+        else {
             return back()->withErrors([
                 'email' => 'The provided credentials do not match our records.',
             ])->onlyInput('email');

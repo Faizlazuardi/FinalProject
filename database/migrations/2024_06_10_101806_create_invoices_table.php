@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('invoice_headers', function (Blueprint $table) {
+        Schema::create('invoices', function (Blueprint $table) {
             $table->uuid('id')->primary(); // Use UUID for primary key
             $table->foreignUuid('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade'); // Define user_id column
             $table->integer('total_price'); // Integer for total price
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('invoice_headers');
+        Schema::dropIfExists('invoices');
     }
 };
