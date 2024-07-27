@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $users = User::where('role', 'user')->paginate(10);
         return view('admin.users', compact('users'));
     }
@@ -31,7 +32,6 @@ class UserController extends Controller
         $user->lastName = $request->lastName;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->role = "user";
         $user->save();
         Auth::login($user);
         return redirect()->intended('/');
@@ -41,7 +41,7 @@ class UserController extends Controller
     {
         // Validasi input dari form
         $request->validate([
-            'email' => 'required|email',
+            'email' => 'required|email:dns',
             'password' => 'required',
         ]);
 
@@ -49,11 +49,14 @@ class UserController extends Controller
         $remember = $request->has('remember');
 
         if (Auth::attempt($credentials, $remember)) {
+            $request->session()->regenerate();
+            if (Auth::user()->role === 'admin') {
+                return redirect()->route('admin');
+            }
             return redirect()->intended('/');
-        }
-        else {
+        } else {
             return back()->withErrors([
-                'email' => 'The provided credentials do not match our records.',
+                'password' => 'The provided credentials do not match our records.',
             ])->onlyInput('email');
         }
     }

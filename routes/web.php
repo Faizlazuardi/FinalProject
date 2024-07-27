@@ -1,48 +1,41 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\indexController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\ToyController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\UserMiddleware;
 
 //Home Page Route
-Route::get('/', function () {
-    return view('index');
-});
-Route::get('/', [IndexController::class, 'index'])->name('home');
-Route::get('/category/{id}', [IndexController::class, 'show'])->name('toy.show');
-Route::get('/toy/{id}', [IndexController::class, 'detail'])->name('toy.detail');
+Route::middleware([UserMiddleware::class])->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 
-//Admin Page Route
-Route::get('/admin', function () {
-    return view('admin.index');
-});
+    // Filter and Show Routes
+    Route::get('/category/{id}', [HomeController::class, 'filter'])->name('toy.filter');
+    Route::get('/toy/{id}', [HomeController::class, 'show'])->name('toy.show');
 
-Route::get('/admin/toys/create', function () {
-    return view('toys.create');
-});
-Route::get('/admin/toys', function () {
-    return view('toys.index');
+    // Cart Page Route
+    Route::get('/cart', [HomeController::class, 'cart'])->name('toy.cart');
 });
 
-Route::prefix('admin')->group(function () {
-    Route::get('/', [AdminController::class, 'index']);
-    Route::get('/users', [UserController::class, 'index']);
+// Admin Page Routes with Middleware
+Route::prefix('admin')->middleware([AdminMiddleware::class])->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::get('/users', [UserController::class, 'index'])->name('admin.users');
     Route::resource('toys', ToyController::class);
 });
 
-//Auth Register Route
+// Auth Routes
 Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
 Route::post('/register', [UserController::class, 'register'])->name('register');
 
-//Auth Login Route
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
-//Auth Logout Route
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');

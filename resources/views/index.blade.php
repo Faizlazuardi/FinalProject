@@ -1,7 +1,7 @@
 @extends('partial.layout')
 @section('content')
     @include('partial.header')
-    <header class="bg-dark py-5">
+    <header class="bg-dark py-5" id="HeroImage">
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
                 <h1 class="display-4 fw-bolder">Your Ultimate Toy Wonderland</h1>
@@ -15,7 +15,7 @@
                 @foreach ($toys as $toy)
                     <div class="col mb-5">
                         <div class="card h-100">
-                            <img class="card-img-top" src="{{ $toy->image }}" alt="{{ $toy->name }}" />
+                            <img class="card-img-top" src="/public/{{ $toy->image }}" alt="{{ $toy->name }}" />
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <h5 class="fw-bolder">{{ $toy->name }}</h5>
@@ -23,13 +23,9 @@
                                 </div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ url('/toy/' . $toy->id) }}">View details</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                                        href="{{ url('/toy/' . $toy->id) }}">View details</a></div>
                             </div>
-                            @auth
-                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                                </div>
-                            @endauth
                         </div>
                     </div>
                 @endforeach

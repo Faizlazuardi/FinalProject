@@ -1,6 +1,6 @@
 @extends('partial.layout')
 @section('content')
-    <form method="POST" action="{{ route('toys.store') }}">
+    <form method="POST" action="{{ route('toys.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="p-3 bg-body rounded shadow-sm vh-100">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">

@@ -31,7 +31,7 @@ class ToyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image||max:2048',
             'category_id' => 'required|exists:categories,id',
             'name' => 'required|string|max:255',
             'description' => 'required|string',
@@ -39,13 +39,11 @@ class ToyController extends Controller
             'price' => 'required|numeric|min:0',
         ]);
 
-        $image = $request->file('image');
-        $imgName = time() . "_" . $image->getClientOriginalName();
-        $image->move(public_path("img"), $imgName);
+        $image = $request->file('image')->move(public_path('img'));
 
         Toy::create([
             'category_id' => $request->category_id,
-            'image' => $imgName,
+            'image' => $image,
             'name' => $request->name,
             'description' => $request->description,
             'stock' => $request->stock,
@@ -62,7 +60,7 @@ class ToyController extends Controller
 
     public function edit(string $id)
     {
-        $toy = Toy::findOrFail($id);
+        $toys = Toy::findOrFail($id);
         $categories = Category::all();
         return view('toys.edit', compact('toys', 'categories'));
     }

@@ -2,7 +2,7 @@
 @section('content')
     <div class="d-flex flex-column flex-md-row">
         <!-- Sidebar -->
-        <nav class="bg-dark p-4 vh-100 sticky-top">
+        <nav class="bg-dark p-4 vh-100 sticky-top d-flex flex-column">
             <h2 class="text-white">WonderToys</h2>
             <div class="nav flex-column nav-pills">
                 <a class="text-white nav-link active" href="{{ url('/admin') }}">
@@ -10,6 +10,12 @@
                 <a class="text-white nav-link" href="{{ url('/admin/toys') }}">
                     <i class="bi bi-box-seam me-2"></i>Toys
                 </a>
+            </div>
+            <div class="mt-auto">
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="btn btn-outline-danger w-100">Logout</button>
+                </form>
             </div>
         </nav>
         <!-- Main content -->

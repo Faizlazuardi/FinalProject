@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use App\Models\Toy;
@@ -8,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
-    use HasFactory,HasUuids;
+    use HasFactory, HasUuids;
 
     protected $primaryKey = 'id';
     protected $fillable = ['name'];

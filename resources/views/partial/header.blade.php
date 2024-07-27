@@ -2,7 +2,7 @@
     <div class="container px-0 px-lg-0">
         <!-- Left nav -->
         <div class="d-flex align-items-center">
-            <a class="navbar-brand" href="{{ route('home') }}">WonderToys</a>
+            <a class="navbar-brand" href="#HeroImage">WonderToys</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
@@ -13,7 +13,8 @@
                             <hr class="dropdown-divider" />
                         </li>
                         @foreach ($categories as $category)
-                        <li><a href="{{ route('toy.show', ['id' => $category->id]) }}" class="dropdown-item">{{ $category->name }}</a></li>
+                            <li><a href="{{ route('toy.show', ['id' => $category->id]) }}"
+                                    class="dropdown-item">{{ $category->name }}</a></li>
                         @endforeach
                     </ul>
                 </li>
@@ -38,13 +39,13 @@
                 @endguest
                 @auth
                     <!-- Cart Button -->
-                    <form class="d-flex">
-                        <button class="btn btn-outline-dark me-3" type="submit">
+                    <div class="d-flex">
+                        <a class="btn btn-outline-dark me-3" type="submit" href="/cart">
                             <i class="bi bi-cart-fill me-1"></i>
                             Cart
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
+                        </a>
+                    </div>
                     <!-- User Icon -->
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
